@@ -1,9 +1,9 @@
 function indentable (textarea, len = 2) {
   const tab = Array(len + 1).join(' ')
-  textarea.addEventListener('keydown', (e) => {
+  textarea.addEventListener('keypress', (e) => {
+    const pos = textarea.selectionStart
+    const val = textarea.value
     if (e.keyCode === 9 /* tab */) {
-      const pos = textarea.selectionStart
-      const val = textarea.value
       e.preventDefault()
       if (e.shiftKey) {
         const firstNL = (val.lastIndexOf('\n', pos - 1) + 1)
@@ -16,10 +16,7 @@ function indentable (textarea, len = 2) {
         textarea.value = val.slice(0, pos) + tab + val.slice(pos)
         textarea.selectionEnd = textarea.selectionStart = pos + len
       }
-    }
-  })
-  textarea.addEventListener('keypress', (e) => {
-    if (e.keyCode === 13 /* enter */) {
+    } else if (e.keyCode === 13 /* enter */) {
       const pos = textarea.selectionStart
       const val = textarea.value
       const firstNL = (val.lastIndexOf('\n', pos) + 1)
