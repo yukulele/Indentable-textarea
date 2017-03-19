@@ -23,7 +23,6 @@ function indentable(textarea, len = 2) {
       const val = textarea.value
       const firstNL = val.lastIndexOf('\n', pos) + 1
       const tab = /^ */.exec(val.slice(firstNL))[0]
-	  console.log(tab.length, "#"+val.slice(firstNL)+"#");
       setTimeout(() => {
         const pos = textarea.selectionStart
         const val = textarea.value
