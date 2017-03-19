@@ -1,1 +1,15 @@
 <h1>Indentable <tt>&lt;textarea&gt;</tt></h1>
+
+<textarea>
+&lt;button&gt;click&lt;button&gt;
+<script>
+  document.querySelector('button').addEventListener('click', ev => {
+    alert('click!')
+  })
+</script>
+</textarea>
+
+<script src="indentable.js"></script>
+<script class="example">
+  indentable(document.querySelector('textarea'))
+</script>
